@@ -1,130 +1,124 @@
 <template>
         <!-- Banner Starts Here -->
-        <div class="main-banner header-text">
-      <div class="container-fluid">
-        <div class="owl-banner owl-carousel">
-          <div class="item">
-            <img src="../../assets/images/banner-item-01.jpg" alt="">
-            <div class="item-content">
-              <div class="main-content">
-                <div class="meta-category">
-                  <span>Fashion</span>
-                </div>
-                <a href="#"><h4>Morbi dapibus condimentum</h4></a>
-                <ul class="post-info">
-                  <li><a href="#">Admin</a></li>
-                  <li><a href="#">May 12, 2020</a></li>
-                  <li><a href="#">12 Comments</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="../../assets/images/banner-item-02.jpg" alt="">
-            <div class="item-content">
-              <div class="main-content">
-                <div class="meta-category">
-                  <span>Nature</span>
-                </div>
-                <a href="#"><h4>Donec porttitor augue at velit</h4></a>
-                <ul class="post-info">
-                  <li><a href="#">Admin</a></li>
-                  <li><a href="#">May 14, 2020</a></li>
-                  <li><a href="#">24 Comments</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="../../assets/images/banner-item-03.jpg" alt="">
-            <div class="item-content">
-              <div class="main-content">
-                <div class="meta-category">
-                  <span>Lifestyle</span>
-                </div>
-                <a href="#"><h4>Best HTML Templates on TemplateMo</h4></a>
-                <ul class="post-info">
-                  <li><a href="#">Admin</a></li>
-                  <li><a href="#">May 16, 2020</a></li>
-                  <li><a href="#">36 Comments</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="../../assets/images/banner-item-04.jpg" alt="">
-            <div class="item-content">
-              <div class="main-content">
-                <div class="meta-category">
-                  <span>Fashion</span>
-                </div>
-                <a href="#"><h4>Responsive and Mobile Ready Layouts</h4></a>
-                <ul class="post-info">
-                  <li><a href="#">Admin</a></li>
-                  <li><a href="#">May 18, 2020</a></li>
-                  <li><a href="#">48 Comments</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="../../assets/images/banner-item-05.jpg" alt="">
-            <div class="item-content">
-              <div class="main-content">
-                <div class="meta-category">
-                  <span>Nature</span>
-                </div>
-                <a href="#"><h4>Cras congue sed augue id ullamcorper</h4></a>
-                <ul class="post-info">
-                  <li><a href="#">Admin</a></li>
-                  <li><a href="#">May 24, 2020</a></li>
-                  <li><a href="#">64 Comments</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="../../assets/images/banner-item-06.jpg" alt="">
-            <div class="item-content">
-              <div class="main-content">
-                <div class="meta-category">
-                  <span>Lifestyle</span>
-                </div>
-                <a href="#"><h4>Suspendisse nec aliquet ligula</h4></a>
-                <ul class="post-info">
-                  <li><a href="#">Admin</a></li>
-                  <li><a href="#">May 26, 2020</a></li>
-                  <li><a href="#">72 Comments</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Banner Ends Here -->
+<div class="main-banner header-text">
+   <div class="container-fluid">
+      <div class="owl-banner owl-carousel owl-loaded owl-drag">
+         <div class="owl-stage-outer">
+            <div class="owl-stage" style="transform: translate3d(-2515px, 0px, 0px); transition: all 0.7s ease 0s; width: 6037px;">
 
-    <section class="call-to-action">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="main-content">
-              <div class="row">
-                <div class="col-lg-8">
-                  <span>Stand Blog HTML5 Template</span>
-                  <h4>Creative HTML Template For Bloggers!</h4>
-                </div>
-                <div class="col-lg-4">
-                  <div class="main-button">
-                    <a rel="nofollow" href="https://templatemo.com/tm-551-stand-blog" target="_parent">Download Now!</a>
+               <div class="owl-item" style="width: 493.067px; margin-right: 10px;">
+                  <div class="item">
+                     <img src="../../assets/images/banner-item-01.jpg" alt="">
+                     <div class="item-content">
+                        <div class="main-content">
+                           <div class="meta-category">
+                              <span>Fashion</span>
+                           </div>
+                           <a href="post-details.html">
+                              <h4>Morbi dapibus condimentum</h4>
+                           </a>
+                           <ul class="post-info">
+                              <li><a href="#">Admin</a></li>
+                              <li><a href="#">May 12, 2020</a></li>
+                              <li><a href="#">12 Comments</a></li>
+                           </ul>
+                        </div>
+                     </div>
                   </div>
-                </div>
-              </div>
+               </div>
+
+               <div class="owl-item" style="width: 493.067px; margin-right: 10px;">
+                  <div class="item">
+                     <img src="../../assets/images/banner-item-01.jpg" alt="">
+                     <div class="item-content">
+                        <div class="main-content">
+                           <div class="meta-category">
+                              <span>Fashion</span>
+                           </div>
+                           <a href="post-details.html">
+                              <h4>Morbi dapibus condimentum 1</h4>
+                           </a>
+                           <ul class="post-info">
+                              <li><a href="#">Admin</a></li>
+                              <li><a href="#">May 12, 2020</a></li>
+                              <li><a href="#">12 Comments</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="owl-item" style="width: 493.067px; margin-right: 10px;">
+                  <div class="item">
+                     <img src="../../assets/images/banner-item-01.jpg" alt="">
+                     <div class="item-content">
+                        <div class="main-content">
+                           <div class="meta-category">
+                              <span>Fashion</span>
+                           </div>
+                           <a href="post-details.html">
+                              <h4>Morbi dapibus condimentum 2</h4>
+                           </a>
+                           <ul class="post-info">
+                              <li><a href="#">Admin</a></li>
+                              <li><a href="#">May 12, 2020</a></li>
+                              <li><a href="#">12 Comments</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="owl-item" style="width: 493.067px; margin-right: 10px;">
+                  <div class="item">
+                     <img src="../../assets/images/banner-item-01.jpg" alt="">
+                     <div class="item-content">
+                        <div class="main-content">
+                           <div class="meta-category">
+                              <span>Fashion</span>
+                           </div>
+                           <a href="post-details.html">
+                              <h4>Morbi dapibus condimentum 4</h4>
+                           </a>
+                           <ul class="post-info">
+                              <li><a href="#">Admin</a></li>
+                              <li><a href="#">May 12, 2020</a></li>
+                              <li><a href="#">12 Comments</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- <div class="owl-item" style="width: 493.067px; margin-right: 10px;">
+                  <div class="item">
+                     <img src="../../assets/images/banner-item-02.jpg" alt="">
+                     <div class="item-content">
+                        <div class="main-content">
+                           <div class="meta-category">
+                              <span>Nature</span>
+                           </div>
+                           <a href="post-details.html">
+                              <h4>Donec porttitor augue at velit</h4>
+                           </a>
+                           <ul class="post-info">
+                              <li><a href="#">Admin</a></li>
+                              <li><a href="#">May 14, 2020</a></li>
+                              <li><a href="#">24 Comments</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div> -->
+
+
             </div>
-          </div>
-        </div>
+         </div>
+         <div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div>
+         <div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div>
       </div>
-    </section>
+   </div>
+</div>
+    <!-- Banner Ends Here -->
 
 
     <section class="blog-posts">
@@ -136,7 +130,7 @@
                 <div class="col-lg-12">
                   <div class="blog-post">
                     <div class="blog-thumb">
-                      <img src="../../assets/images/blog-post-01.jpg" alt="">
+                      <img src="../../../../assets/images/blog-post-01.jpg" alt="">
                     </div>
                     <div class="down-content">
                       <span>Lifestyle</span>
@@ -171,7 +165,7 @@
                 <div class="col-lg-12">
                   <div class="blog-post">
                     <div class="blog-thumb">
-                      <img src="../../assets/images/blog-post-02.jpg" alt="">
+                      <img src="../../../../assets/images/blog-post-02.jpg" alt="">
                     </div>
                     <div class="down-content">
                       <span>Healthy</span>
@@ -206,7 +200,7 @@
                 <div class="col-lg-12">
                   <div class="blog-post">
                     <div class="blog-thumb">
-                      <img src="../../assets/images/blog-post-03.jpg" alt="">
+                      <img src="../../../../assets/images/blog-post-03.jpg" alt="">
                     </div>
                     <div class="down-content">
                       <span>Fashion</span>

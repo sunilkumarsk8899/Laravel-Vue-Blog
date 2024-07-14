@@ -1,0 +1,8 @@
+.tost-container {
+    width: 25%;
+    background: darkseagreen;
+    padding: 1rem;
+    border-radius: 10px;
+    position: absolute;
+    right: 2rem;
+}

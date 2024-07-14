@@ -12,7 +12,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    @vite(['resources/css/app.css','resources/assets/css/flex-slider.css','resources/assets/css/fontawesome.css','resources/assets/css/owl.css','resources/assets/css/templatemo-stand-blog.css','resources/assets/css/bootstrap.min.css'])
+    @vite(['resources/css/app.css','resources/assets/css/flex-slider.css','resources/assets/css/fontawesome.css','resources/assets/css/owl.css','resources/assets/css/templatemo-stand-blog.css','resources/assets/css/bootstrap.min.css','resources/assets/css/custom.css'])
 
 
   </head>
@@ -23,7 +23,7 @@
 
 
 
-  @vite(['resources/js/app.js','resources/assets/js/accordions.js','resources/assets/js/custom.js','resources/assets/js/isotope.js','resources/assets/js/owl.js','resources/assets/js/slick.js','resources/assets/js/bootstrap.bundle.min.js'])
+  @vite(['resources/js/app.js','resources/assets/js/accordions.js','resources/assets/js/custom.js','resources/assets/js/isotope.js','resources/assets/js/owl.js','resources/assets/js/slick.js','resources/assets/js/myjs.js'])
 
   <script language = "text/Javascript">
     cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field

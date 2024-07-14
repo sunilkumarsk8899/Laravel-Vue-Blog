@@ -38,6 +38,14 @@
                 <router-link to="/contact-us" class="nav-link">Contact Us</router-link>
                 <!-- <a class="nav-link" href="post-details.html">Post Details</a> -->
               </li>
+
+              <li class="nav-item">
+                <router-link to="/register" class="nav-link">Register</router-link>
+              </li>
+
+              <li class="nav-item">
+                <router-link to="/login" class="nav-link">Login</router-link>
+              </li>
               <!-- <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact Us</a>
               </li> -->
@@ -52,6 +60,20 @@
         <router-view></router-view>
     <!-- </div> -->
 
+
+
+
+<div class="tost-container">
+  <div class="toast" data-autohide="false">
+    <div class="toast-header">
+      <strong class="mr-auto text-light">Stand Blog </strong>
+      <small class="text-dark toast-time">5 Close</small>
+      <!-- <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button> -->
+    </div>
+    <div class="toast-body">
+    </div>
+  </div>
+</div>
 
 
 <footer>
@@ -84,6 +106,10 @@
   export default {
     name: 'App',
   };
+
+  $(document).ready(function(){
+//   $('.toast').hide();
+});
   </script>
 
   <style>
