@@ -25,11 +25,18 @@ const onLogin = async (e) =>{
     err.value = '';
     const resp = await axios.post('/api/login',formData);
     if(resp){
-        console.log(resp);
-        if(resp.data.user.roles == 'admin'){
-            router.push('/admin/dashboard');
-        } else if(resp.data.user.roles == 'user'){
-            router.push('/user/dashboard');
+        console.log(resp.data);
+        if(resp.data.status == true){
+            localStorage.setItem('userData', JSON.stringify(resp.data.user));
+            localStorage.setItem('role', resp.data.user.roles);
+            localStorage.setItem('token', resp.data.token);
+            if(resp.data.user.roles == 'admin'){
+                router.push('/admin/dashboard');
+            } else if(resp.data.user.roles == 'user'){
+                router.push('/user/dashboard');
+            }
+        }else{
+            alert('Login Faild...');
         }
     }
 

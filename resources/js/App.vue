@@ -1,3 +1,34 @@
+<script>
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+import router from './router';
+
+export default {
+  name: 'App',
+  setup() {
+    const is_login = ref(false);
+
+    onMounted(() => {
+      is_login.value = localStorage.getItem('role') ? true : false;
+      console.log(is_login.value);
+    });
+
+    const logout = () => {
+      console.log('logout');
+      localStorage.removeItem('userData');
+      localStorage.removeItem('role');
+      router.push('/login');
+    };
+
+    return {
+      is_login,
+      logout,
+    };
+  },
+};
+</script>
+
+
 <template>
 
     <!-- ***** Preloader Start ***** -->
@@ -39,13 +70,20 @@
                 <!-- <a class="nav-link" href="post-details.html">Post Details</a> -->
               </li>
 
-              <li class="nav-item">
-                <router-link to="/register" class="nav-link">Register</router-link>
+              <li class="nav-item" v-if="is_login">
+                <span class="nav-link" @click="logout">Logout</span>
               </li>
 
-              <li class="nav-item">
-                <router-link to="/login" class="nav-link">Login</router-link>
-              </li>
+              <div class="" v-else>
+                <li class="nav-item">
+                    <router-link to="/register" class="nav-link">Register</router-link>
+                </li>
+
+                <li class="nav-item">
+                    <router-link to="/login" class="nav-link">Login</router-link>
+                </li>
+              </div>
+
               <!-- <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact Us</a>
               </li> -->
@@ -102,15 +140,6 @@
     <!-- </div> -->
   </template>
 
-  <script>
-  export default {
-    name: 'App',
-  };
-
-  $(document).ready(function(){
-//   $('.toast').hide();
-});
-  </script>
 
   <style>
   nav {
@@ -126,3 +155,4 @@
     color: #ffed4a;
   }
   </style>
+

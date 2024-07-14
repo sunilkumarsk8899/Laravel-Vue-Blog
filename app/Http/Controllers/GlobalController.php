@@ -37,7 +37,9 @@ class GlobalController extends Controller
             // Check if the provided password matches the stored hashed password
             if (Hash::check($request->input('password'), $user->password)) {
                 // Authentication successful
+                $token = $user->createToken('jwt-blog-vue')->plainTextToken;
                 return response()->json([
+                    'token' => $token,
                     'user' => $user,
                     'status' => true,
                     'message' => 'Login successful'
