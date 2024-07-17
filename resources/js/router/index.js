@@ -8,8 +8,9 @@ import Single from '../components/Single.vue';
 import Register from '../components/Register.vue';
 import Login from '../components/Login.vue';
 import adminDashboard from '../components/admin/Dashboard.vue';
+import adminProfile from '../components/admin/Profile.vue';
 import userDashboard from '../components/user/Dashboard.vue';
-// import adminDashboard from '../components/admin/Dashboard.vue';
+import userProfile from '../components/user/Profile.vue';
 
 
 const routes = [
@@ -52,6 +53,14 @@ const routes = [
     {
         path: '/user/dashboard',
         component: userDashboard
+    },
+    {
+        path: '/admin/dashboard',
+        component: adminProfile
+    },
+    {
+        path: '/user/profile',
+        component: userProfile
     }
 ];
 

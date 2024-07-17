@@ -1,5 +1,5 @@
 <script>
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import axios from 'axios';
 import router from './router';
 
@@ -7,10 +7,14 @@ export default {
   name: 'App',
   setup() {
     const is_login = ref(false);
+    const role = ref([]);
+    const userData = ref([]);
 
     onMounted(() => {
       is_login.value = localStorage.getItem('role') ? true : false;
-      console.log(is_login.value);
+      role.value = localStorage.getItem('role');
+      userData.value = JSON.parse(localStorage.getItem('userData'));
+      console.log(userData.value.name);
     });
 
     const logout = () => {
@@ -20,9 +24,16 @@ export default {
       router.push('/login');
     };
 
+    const profileUrl = computed(() => {
+      return role.value === 'admin' ? '/admin/profile' : '/user/profile';
+    });
+
     return {
       is_login,
       logout,
+      role,
+      userData,
+      profileUrl,
     };
   },
 };
@@ -71,7 +82,11 @@ export default {
               </li>
 
               <li class="nav-item" v-if="is_login">
-                <span class="nav-link" @click="logout">Logout</span>
+                <router-link :to="profileUrl" class="nav-link">Profile ( {{ userData.name }} ) </router-link>
+              </li>
+
+              <li class="nav-item" v-if="is_login">
+                <span class="nav-link" @click="logout">Logout ( {{ role }} ) </span>
               </li>
 
               <div class="" v-else>
