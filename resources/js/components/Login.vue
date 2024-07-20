@@ -6,6 +6,14 @@ import router from '../router';
 let form = ref([]);
 let err = ref('');
 let msg = ref('');
+let role = ref('');
+
+onMounted(()=>{
+    role.value = localStorage.getItem('role') ? true : false;
+    if(role.value){
+        router.push('/');
+    }
+});
 
 const onLogin = async (e) =>{
     err.value = '';

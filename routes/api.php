@@ -36,3 +36,4 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::post('/register',[GlobalController::class,'register'])->name('register');
 Route::post('/login',[GlobalController::class,'login'])->name('login');
+Route::put('/profile-update',[GlobalController::class,'profile_update'])->name('profile_update');

@@ -14,7 +14,6 @@ export default {
       is_login.value = localStorage.getItem('role') ? true : false;
       role.value = localStorage.getItem('role');
       userData.value = JSON.parse(localStorage.getItem('userData'));
-      console.log(userData.value.name);
     });
 
     const logout = () => {

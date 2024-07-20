@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class GlobalController extends Controller
 {
@@ -60,5 +61,30 @@ class GlobalController extends Controller
                 'message' => 'User not found'
             ]);
         }
+    }
+
+    public function profile_update(Request $request){
+        $user = User::find($request->input('id'));
+        $currPassInvalid = false;
+        $is_save = false;
+        if (!Hash::check($request->input('curr_pass'), $user->password))
+        {
+            $currPassInvalid = true;
+        }
+
+        if($currPassInvalid == false){
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->password = Hash::make($request->input('conf_pass'));
+            $user->save();
+            $is_save = true;
+        }
+        return response()->json([
+            'user' => $user,
+            'id' => $request->input('id'),
+            'request_data' => $request->all(),
+            'currPassInvalid' => $currPassInvalid,
+            'is_save' => $is_save
+        ]);
     }
 }

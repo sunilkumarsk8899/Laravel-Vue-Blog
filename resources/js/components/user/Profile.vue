@@ -1,6 +1,7 @@
 <script>
 import { ref, computed, onMounted } from 'vue';
 import axios from 'axios';
+import router from '../../router';
 
 export default {
   name: 'App',
@@ -13,15 +14,44 @@ export default {
     const curr_pass = ref('')
     const new_pass = ref('')
     const conf_pass = ref('')
+    const userID = ref('');
 
     onMounted(() => {
-      role.value = localStorage.getItem('role');
+        role.value = localStorage.getItem('role');
+        if(role.value != 'user'){
+            router.push('/');
+        }
+
       userData.value = JSON.parse(localStorage.getItem('userData'));
       console.log(userData.value);
+      userID.value = userData.value?.id;
     });
 
-    const updateProfile = () =>{
-        console.log('update',name.value,email.value,curr_pass.value,new_pass.value,conf_pass.value);
+    const updateProfile = async () =>{
+      if(userData.value.name.length > 0 && userData.value.email.length > 0 && curr_pass.value.length > 0 && new_pass.value.length > 0 && conf_pass.value.length > 0){
+        if(new_pass.value != conf_pass.value){
+          alert('Confirmation Password Not Match');
+        }else{
+          console.log('update',userData.value.name,userData.value.email,curr_pass.value,new_pass.value,conf_pass.value);
+          let id = userID.value;
+          const resp = await axios.put(`/api/profile-update`,{
+            id: id,
+            name: userData.value.name,
+            email: userData.value.email,
+            curr_pass: curr_pass.value,
+            new_pass: new_pass.value,
+            conf_pass: conf_pass.value
+          });
+          console.log(resp.data);
+          if(resp.data.currPassInvalid == true){
+            alert('Current Password is Invalid');
+          }else{
+            alert('Profile Update');
+          }
+        }
+      }else{
+        alert('All Fields Is Required');
+      }
     }
 
 
@@ -98,11 +128,7 @@ export default {
             </div>
           </div>
 
-          <!-- <div class="col-lg-12">
-            <div id="map">
-              <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="450px" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </div>
-          </div> -->
+
 
         </div>
       </div>
