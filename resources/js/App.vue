@@ -27,12 +27,17 @@ export default {
       return role.value === 'admin' ? '/admin/profile' : '/user/profile';
     });
 
+    const dashboardUrl = computed(() => {
+      return role.value === 'admin' ? '/admin/dashboard' : '/user/dashboard';
+    });
+
     return {
       is_login,
       logout,
       role,
       userData,
       profileUrl,
+      dashboardUrl,
     };
   },
 };
@@ -81,7 +86,11 @@ export default {
               </li>
 
               <li class="nav-item" v-if="is_login">
-                <router-link :to="profileUrl" class="nav-link">Profile ( {{ userData.name }} ) </router-link>
+                <router-link :to="dashboardUrl" class="nav-link">Dashboard</router-link>
+              </li>
+
+              <li class="nav-item" v-if="is_login">
+                <router-link :to="profileUrl" class="nav-link">Profile</router-link>
               </li>
 
               <li class="nav-item" v-if="is_login">

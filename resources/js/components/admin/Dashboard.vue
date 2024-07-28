@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import router from '../../router';
+import Sidebar from './post/Sidebar.vue';
 
 const role = ref('');
 
@@ -13,7 +14,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <h1>Admin Dashboard </h1>
-  </div>
+
+<Sidebar/>
+
 </template>

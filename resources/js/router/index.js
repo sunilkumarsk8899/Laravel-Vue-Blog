@@ -11,6 +11,9 @@ import adminDashboard from '../components/admin/Dashboard.vue';
 import adminProfile from '../components/admin/Profile.vue';
 import userDashboard from '../components/user/Dashboard.vue';
 import userProfile from '../components/user/Profile.vue';
+import addProduct from '../components/admin/post/AddPost.vue';
+import listProduct from '../components/admin/post/PostList.vue';
+import addCategory from '../components/admin/post/AddCategory.vue';
 
 
 const routes = [
@@ -55,12 +58,24 @@ const routes = [
         component: userDashboard
     },
     {
-        path: '/admin/dashboard',
+        path: '/admin/profile',
         component: adminProfile
     },
     {
         path: '/user/profile',
         component: userProfile
+    },
+    {
+        path: '/admin/post/add',
+        component: addProduct
+    },
+    {
+        path: '/admin/post/list',
+        component: listProduct
+    },
+    {
+        path: '/admin/category/add',
+        component:addCategory
     }
 ];
 
