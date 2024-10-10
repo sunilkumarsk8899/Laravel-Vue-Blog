@@ -1,7 +1,11 @@
 <script setup>
+import axios from 'axios';
 import Sidebar from './Sidebar.vue';
 import { reactive, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
+import Swal from 'sweetalert2';
+
+const route = useRouter();
 
 /** define form field according object key */
 const form = reactive({
@@ -9,10 +13,33 @@ const form = reactive({
     category_slug: '',
 });
 
+const catError = ref('');
+
 /** add category handle */
-const addCategoryHandle = (e) =>{
+const addCategoryHandle = async (e) =>{
     e.preventDefault();
     console.log('hello',form);
+    try{
+        const response = await axios.post('/api/add-category',form);
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Category  Added Successfully",
+            showConfirmButton: false,
+            timer: 2000
+        });
+    }catch(error){
+        console.log(error.response.data.message);
+        catError.value = error.response.data.message;
+        Swal.fire({
+            icon: "error",
+            title: error.response.data.message,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true,
+        });
+    }
 }
 
 /** category name according slug create */
@@ -51,6 +78,7 @@ const generate_slug = (e) =>{
                                         <div class="col-md-12 col-sm-12">
                                             <fieldset>
                                             <input name="category" type="text" id="category" placeholder="Enter Category Name" required="" v-model="form.category" v-on:keyup="generate_slug">
+                                            <small v-if="catError"> {{ catError }} </small>
                                             </fieldset>
                                         </div>
                                         <div class="col-md-12 col-sm-12">

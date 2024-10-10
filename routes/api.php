@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GlobalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,4 +39,4 @@ Route::post('/register',[GlobalController::class,'register'])->name('register');
 Route::post('/login',[GlobalController::class,'login'])->name('login');
 Route::put('/profile-update',[GlobalController::class,'profile_update'])->name('profile_update');
 
-// Route::post('/add-category',[])
+Route::post('/add-category',[CategoryController::class,'store'])->name('category.store');
