@@ -1,5 +1,28 @@
 <script setup>
 import Sidebar from './Sidebar.vue';
+import { reactive, ref } from 'vue';
+import { useRoute } from 'vue-router';
+
+/** define form field according object key */
+const form = reactive({
+    category: '',
+    category_slug: '',
+});
+
+/** add category handle */
+const addCategoryHandle = (e) =>{
+    e.preventDefault();
+    console.log('hello',form);
+}
+
+/** category name according slug create */
+const generate_slug = (e) =>{
+    let cat = e.target.value.trim();
+    cat = cat.replace(/\s+/g, '-').toLowerCase();
+    console.log(cat);
+    form.category_slug = cat.trim();
+}
+
 </script>
 <template>
     <div class="container-fluid">
@@ -27,18 +50,18 @@ import Sidebar from './Sidebar.vue';
                                         <div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             <fieldset>
-                                            <input name="category" type="text" id="category" placeholder="Enter Category Name" required="">
+                                            <input name="category" type="text" id="category" placeholder="Enter Category Name" required="" v-model="form.category" v-on:keyup="generate_slug">
                                             </fieldset>
                                         </div>
                                         <div class="col-md-12 col-sm-12">
                                             <fieldset>
-                                            <input name="category_slug" type="text" id="category_slug" placeholder="Enter Category Slug" required="">
+                                            <input name="category_slug" type="text" id="category_slug" placeholder="Enter Category Slug" required="" v-model="form.category_slug" >
                                             </fieldset>
                                         </div>
 
                                         <div class="col-lg-12">
                                             <fieldset>
-                                            <button type="submit" id="form-submit" class="main-button">Add Category</button>
+                                            <button type="submit" id="form-submit" class="main-button" @click="addCategoryHandle">Add Category</button>
                                             </fieldset>
                                         </div>
                                         </div>
