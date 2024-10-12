@@ -42,4 +42,5 @@ Route::put('/profile-update',[GlobalController::class,'profile_update'])->name('
 Route::post('/add-category',[CategoryController::class,'store'])->name('category.store');
 Route::get('/get-category',[CategoryController::class,'get_category'])->name('category.get');
 Route::delete('/category/{id}/delete',[CategoryController::class,'delete_category'])->name('category.delete');
-Route::get('/category/{id}/edit',[CategoryController::class,'edit_category'])->name('category.edit');
+Route::post('/category/{id}/edit',[CategoryController::class,'edit_category'])->name('category.edit');
+Route::post('/category/{id}/update',[CategoryController::class,'update_category'])->name('category.update');

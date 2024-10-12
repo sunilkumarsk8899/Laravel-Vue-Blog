@@ -16,6 +16,9 @@ const form = reactive({
 const catError = ref('');
 const refresh = ref(false);
 const getCategorys = ref([]);
+const cat_id = ref('');
+const params = useRoute();
+cat_id.value = params.params.id; // get cat id from url
 
 
 /** onmounted */
@@ -32,20 +35,22 @@ watch( () => refresh.value,
 
 
 /** add category handle */
-const addCategoryHandle = async (e) =>{
+const updateCategoryHandle = async (e) =>{
     e.preventDefault();
+    console.log(form);
+
     try{
-        const response = await axios.post('/api/add-category',form);
+        const response = await axios.post(`/api/category/${cat_id.value}/update`,form);
         Swal.fire({
             position: "center",
             icon: "success",
-            title: "Category  Added Successfully",
+            title: response.data.message,
             showConfirmButton: false,
             timer: 2000
         });
-        refresh.value = true;
+        refresh.value = Math.ceil(Math.random()*1000000);
+        route.push('/admin/category/add');
     }catch(error){
-        refresh.value = false;
         console.log(error.response.data.message);
         catError.value = error.response.data.message;
         Swal.fire({
@@ -53,7 +58,7 @@ const addCategoryHandle = async (e) =>{
             title: error.response.data.message,
             position: "center",
             showConfirmButton: false,
-            timer: 500,
+            timer: 1000,
             timerProgressBar: true,
         });
     }
@@ -68,8 +73,12 @@ const generate_slug = (e) =>{
 
 /** fetch category */
 const fetchCategory = async () =>{
-    const resp = await axios.get('/api/get-category');
+    console.log(cat_id.value);
+
+    const resp = await axios.post(`/api/category/${cat_id.value}/edit`);
     getCategorys.value = resp.data.categories;
+    form.category = getCategorys.value.name;
+    form.category_slug = getCategorys.value.slug;
 }
 
 </script>
@@ -111,7 +120,7 @@ const fetchCategory = async () =>{
 
                                         <div class="col-lg-12">
                                             <fieldset>
-                                            <button type="submit" id="form-submit" class="main-button" @click="addCategoryHandle">Add Category</button>
+                                            <button type="submit" id="form-submit" class="main-button" @click="updateCategoryHandle">Update Category</button>
                                             </fieldset>
                                         </div>
                                         </div>

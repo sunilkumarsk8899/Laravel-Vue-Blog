@@ -34,4 +34,23 @@ class CategoryController extends Controller
             'message' => 'Category deleted successfully'
         ]);
     }
+
+    public function edit_category($id){
+        $category = Category::find($id);
+        return response()->json([
+            'categories' => $category,
+            'id' => $id
+        ]);
+    }
+
+    public function update_category(CategoryRequest $request, $id){
+        $category = Category::find($id);
+        $category->name = $request->input('category');
+        $category->slug = $request->input('category_slug');
+        $category->save();
+        return response()->json([
+            'message' => 'Category updated successfully',
+            'data' => $request->all()
+        ]);
+    }
 }
