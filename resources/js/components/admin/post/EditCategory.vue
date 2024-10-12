@@ -24,13 +24,9 @@ onMounted(() => {
 });
 
 /** Watch for changes in category_name and auto-generate slug */
-watch(
-  () => refresh.value,  // Watching refresh.value
-  (newVal, oldVal) => { // Callback when it changes
-    if (newVal !== oldVal) { // Optionally, check if there's an actual change
-      fetchCategory(); // Call the method to fetch categories
-
-    }
+watch( () => refresh.value,
+  (newVal, oldVal) => {
+    fetchCategory();
   }
 );
 
@@ -47,9 +43,10 @@ const addCategoryHandle = async (e) =>{
             showConfirmButton: false,
             timer: 2000
         });
-        refresh.value = Math.ceil(Math.random()*1000000);
+        refresh.value = true;
     }catch(error){
-        // console.log(error.response.data.message);
+        refresh.value = false;
+        console.log(error.response.data.message);
         catError.value = error.response.data.message;
         Swal.fire({
             icon: "error",
@@ -75,45 +72,6 @@ const fetchCategory = async () =>{
     getCategorys.value = resp.data.categories;
 }
 
-/** edit cat redirect */
-const editCatHandle = (id) =>{
-    route.push(`/admin/category/${id}/edit`);
-}
-
-/** delete category */
-const deleteCategoryHandle = async (id) => {
-    Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-    }).then(async (result) => { // Mark the callback function as async
-        if (result.isConfirmed) {
-            try {
-                const resp = await axios.delete(`/api/category/${id}/delete`);
-                // console.log(resp.data.message);
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                });
-                refresh.value = Math.ceil(Math.random()*1000000);
-            } catch (error) {
-                // console.error('Error deleting category:', error);
-                Swal.fire({
-                    title: "Error!",
-                    text: "There was a problem deleting the category.",
-                    icon: "error"
-                });
-            }
-        }
-    });
-};
-
-
 </script>
 <template>
     <div class="container-fluid">
@@ -134,7 +92,7 @@ const deleteCategoryHandle = async (id) => {
                                 <div class="col-lg-8">
                                 <div class="sidebar-item contact-form">
                                     <div class="sidebar-heading">
-                                    <h2>Add Category</h2>
+                                    <h2>Edit Category</h2>
                                     </div>
                                     <div class="content">
                                     <form id="contact" action="" method="post">
@@ -166,28 +124,6 @@ const deleteCategoryHandle = async (id) => {
                             </div>
                         </div>
 
-                        <div class="col-lg-12">
-                            <h1>Categorys</h1>
-                            <table class="table table-dark">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Slug</th>
-                                    <th scope="col" colspan="2" class="text-center">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="cat in getCategorys" :key="cat.id">
-                                        <th scope="row">{{ cat.name }}</th>
-                                        <td>{{ cat.slug }}</td>
-                                        <td>{{ (cat.status) ? "Published" : 'Draft' }}</td>
-                                        <td class="text-center"><button class="text-light btn btn-primary" @click="editCatHandle(cat.id)">Edit</button></td>
-                                        <td class="text-center"><button class="text-light btn btn-danger" @click="deleteCategoryHandle(cat.id)">Delete</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
 
                         </div>
                     </div>

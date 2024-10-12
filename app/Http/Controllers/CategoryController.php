@@ -17,4 +17,21 @@ class CategoryController extends Controller
             'message' => 'Category created successfully'
         ], 200);
     }
+
+    public function get_category(){
+        $categories = Category::get();
+        return response()->json([
+            'categories' => $categories
+        ]);
+    }
+
+    public function delete_category(Request $request, $id){
+        $category = Category::find($id);
+        if($category){
+            $category->delete();
+        }
+        return response()->json([
+            'message' => 'Category deleted successfully'
+        ]);
+    }
 }
