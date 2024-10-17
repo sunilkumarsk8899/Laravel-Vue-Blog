@@ -5,11 +5,11 @@ import Sidebar from './Sidebar.vue';
     <div class="container-fluid">
         <div class="row">
 
-            <div class="col-4">
+            <div class="col-3">
                 <Sidebar/>
             </div>
 
-            <div class="col-8">
+            <div class="col-9">
                 <section class="contact-us">
                     <div class="container">
                         <div class="row">

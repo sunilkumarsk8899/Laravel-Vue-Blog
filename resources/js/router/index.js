@@ -51,6 +51,7 @@ const routes = [
     },
     {
         path: '/admin/dashboard',
+        name:'admin.dashboard',
         component: adminDashboard
     },
     {

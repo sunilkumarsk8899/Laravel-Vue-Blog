@@ -4,7 +4,7 @@
         <div class="col-3">
             <Sidebar/>
         </div>
-        <div class="col-8 text-center">
+        <div class="col-8">
             <h1>List Posts</h1>
 
             <table id="myTable" class="display">
