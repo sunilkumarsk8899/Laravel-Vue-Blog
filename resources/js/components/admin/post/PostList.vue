@@ -1,4 +1,21 @@
+<script setup>
+import Sidebar from './Sidebar.vue';
+import axios from 'axios';
+import { onMounted, ref, nextTick } from 'vue';
 
+const productsData = ref([]);
+onMounted(() => {
+    getProducts();
+});
+
+const getProducts = async () =>{
+    const response = await axios.get('http://127.0.0.1:8000/api/get-products');
+    const data = response.data;
+    productsData.value = data;
+    console.log(data);
+}
+
+</script>
 <template>
     <div class="row">
         <div class="col-3">
@@ -7,22 +24,17 @@
         <div class="col-8">
             <h1>List Posts</h1>
 
-            <table id="myTable" class="display">
+            <table class="table table-dark">
                 <thead>
                     <tr>
-                        <th>Column 1</th>
-                        <th>Column 2</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Slug</th>
+                    <th scope="col" colspan="2" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Row 1 Data 1</td>
-                        <td>Row 1 Data 2</td>
-                    </tr>
-                    <tr>
-                        <td>Row 2 Data 1</td>
-                        <td>Row 2 Data 2</td>
-                    </tr>
+
                 </tbody>
             </table>
 
@@ -31,12 +43,5 @@
 </template>
 
 
-<script setup>
-import Sidebar from './Sidebar.vue';
-import axios from 'axios';
-import { onMounted, ref } from 'vue';
 
-onMounted( async ()=>{
-    $('#myTable').DataTable();
-});
-</script>
+

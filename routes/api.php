@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GlobalController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,3 +45,6 @@ Route::get('/get-category',[CategoryController::class,'get_category'])->name('ca
 Route::delete('/category/{id}/delete',[CategoryController::class,'delete_category'])->name('category.delete');
 Route::post('/category/{id}/edit',[CategoryController::class,'edit_category'])->name('category.edit');
 Route::post('/category/{id}/update',[CategoryController::class,'update_category'])->name('category.update');
+
+Route::get('/get-products',[ProductController::class,'get_products'])->name('product.get-products');
+Route::post('/add-products',[ProductController::class,'add_products'])->name('product.get-products');
