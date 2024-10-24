@@ -47,4 +47,4 @@ Route::post('/category/{id}/edit',[CategoryController::class,'edit_category'])->
 Route::post('/category/{id}/update',[CategoryController::class,'update_category'])->name('category.update');
 
 Route::get('/get-products',[ProductController::class,'get_products'])->name('product.get-products');
-Route::post('/add-products',[ProductController::class,'add_products'])->name('product.get-products');
+Route::post('/add-products',[ProductController::class,'add_products'])->name('product.add-products');
