@@ -81,6 +81,10 @@ const routes = [
     {
         path: '/admin/category/:id/edit',
         component: import('../components/admin/post/EditCategory.vue')
+    },
+    {
+        path: '/admin/post/:id/edit',
+        component: import('../components/admin/post/EditPost.vue')
     }
 ];
 

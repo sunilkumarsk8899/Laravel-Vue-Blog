@@ -2,6 +2,9 @@
 import Sidebar from './Sidebar.vue';
 import axios from 'axios';
 import { onMounted, ref, nextTick } from 'vue';
+import { useRouter } from 'vue-router';
+
+const route = useRouter();
 
 const productsData = ref([]);
 onMounted(() => {
@@ -12,6 +15,11 @@ const getProducts = async () =>{
     const response = await axios.get('http://127.0.0.1:8000/api/get-products');
     productsData.value = response.data.products;
     console.log(response);
+}
+
+const editPosthandle = (id) =>{
+    console.log(id);
+    router
 }
 
 </script>
@@ -45,8 +53,8 @@ const getProducts = async () =>{
                         <td>{{ product.published_date }}</td>
                         <td>{{ product.category.name }}</td>
                         <td>{{ (product.status) ? "Published" : 'Draft' }}</td>
-                        <td class="text-center"><button class="text-light btn btn-primary" @click="editCatHandle(product.id)">Edit</button></td>
-                        <td class="text-center"><button class="text-light btn btn-danger" @click="deleteCategoryHandle(product.id)">Delete</button></td>
+                        <td class="text-center"><button class="text-light btn btn-primary" @click="editPosthandle(product.id)">Edit</button></td>
+                        <td class="text-center"><button class="text-light btn btn-danger" @click="deletePostHandle(product.id)">Delete</button></td>
                     </tr>
                 </tbody>
             </table>
