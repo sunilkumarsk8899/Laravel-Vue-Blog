@@ -19,7 +19,7 @@ const getProducts = async () =>{
 
 const editPosthandle = (id) =>{
     console.log(id);
-    router
+    route.push(`/admin/post/${id}/edit`);
 }
 
 </script>

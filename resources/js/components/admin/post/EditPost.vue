@@ -1,5 +1,14 @@
 <script setup>
-import { reactive } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import axios from 'axios';
+
+const route = useRoute();
+onMounted(() => {
+    console.log('params is here ',route.params);
+    get_edit_product();
+    get_categorys();
+});
 
 
 const form = reactive({
@@ -12,6 +21,48 @@ const form = reactive({
 });
 const formError = ref({});
 
+
+const categorys = ref({});
+
+
+const get_edit_product = async () => {
+    try {
+        const response = await axios.get(`/api/edit/${route.params.id}/product`);
+        // Check the response structure and assign data accordingly
+        const product = response.data.product;
+
+        form.title = product.name;
+        form.image = product.image; // Confirm if the path is correct
+        form.desc = product.desc;
+        form.cat_id = product.category_id;
+        form.published_date = product.published_date;
+        form.status = product.status;
+    } catch (error) {
+            console.log(error);
+    }
+}
+
+
+
+const get_categorys = () =>{
+    const resp = axios.get('/api/get-category');
+    resp.then((res) => {
+        console.log('all categorys ',res.data);
+        categorys.value = res.data.categories;
+    }).catch((err) => {
+            console.log(err);
+    });
+}
+
+
+
+const submitForm = async (event) => {
+    event.preventDefault();
+    console.log('submit',form);
+    const resp = await axios.post(`/api/update/${route.params.id}/product`, form);
+    console.log(resp.data);
+
+}
 
 </script>
 <template>
@@ -36,7 +87,7 @@ const formError = ref({});
                                     <h2>Add Post</h2>
                                     </div>
                                     <div class="content">
-                                    <form id="contact" action="" method="post">
+                                    <form id="contact" action="" method="post" @submit.prevent="submitForm" >
                                         <div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             <fieldset>
@@ -61,11 +112,13 @@ const formError = ref({});
 
                                         <div class="col-md-12 col-sm-12">
                                             <fieldset>
-                                            <select name="" id="cat_id" style="width: 100%;padding: 14px 0;margin-bottom: 10px;" @change="getCatId">
-                                                <option v-for="getCategory in getCategorys" :key="getCategory.id" :value=" getCategory.id ">
+
+                                            <select v-model="form.cat_id" id="cat_id" style="width: 100%; padding: 14px 0; margin-bottom: 10px;" @change="getCatId">
+                                                <option v-for="getCategory in categorys" :key="getCategory.id" :value="getCategory.id">
                                                     {{ getCategory.name }}
                                                 </option>
                                             </select>
+
                                             <span v-if="formError.cat_id" class="error">{{ formError.cat_id[0] }}</span>
                                             </fieldset>
                                         </div>
